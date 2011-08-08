@@ -1,0 +1,557 @@
+/* Notes
+	
+	Title: Carolina Welcome 2011 - University of South Carolina
+	Author: Joshua A. Toliver
+	Colors: #131313 , #CCCCCC, #90122a
+
+	Maintenance: 
+	
+		Make default image for thumbnails
+		Add vailidation for new event form
+		Style featured events
+		Finish building admin area. -> style index, forms, and check routing.
+		*Add random stock images
+		*fix browser issues
+		*paperclip browse button in new
+
+
+----------------------------------------------------------------------------------------------------*/
+
+
+/* Structure
+----------------------------------------------------------------------------------------------------*/
+html {
+    background: url(../images/gradbg.png) no-repeat fixed, url(../images/sitebg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body {
+	font-family: Helvetica,arial,sans-serif;
+	font-size:.9em;
+	color:#333;
+
+}
+
+
+#pixie {
+    z-index:-1;
+    position: absolute;
+    opacity: .5;
+}
+
+a {
+	text-decoration:none;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+
+a img {
+	border:none;
+}
+
+/* Typo
+----------------------------------------------------------------------------------------------------*/
+
+@font-face {
+    font-family: 'LeagueGothicRegular';
+    src: url('../fonts/League_Gothic-webfont.eot');
+    src: url('../fonts/League_Gothic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/League_Gothic-webfont.woff') format('woff'),
+         url('../fonts/League_Gothic-webfont.ttf') format('truetype'),
+         url('../fonts/League_Gothic-webfont.svg#LeagueGothicRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'WinterthurCondensedRegular';
+    src: url('../fonts/WinterthurCondensed-webfont.eot');
+    src: url('../fonts/WinterthurCondensed-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/WinterthurCondensed-webfont.woff') format('woff'),
+         url('../fonts/WinterthurCondensed-webfont.ttf') format('truetype'),
+         url('../fonts/WinterthurCondensed-webfont.svg#WinterthurCondensedRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+h1 {  
+    font-family: 'LeagueGothicRegular', arial, serif;
+	border-bottom:10px solid #000;
+	font-size:4.0em;
+	margin-bottom:17px;
+	text-transform:uppercase;
+	color:#a03768;
+}
+
+h1 span {
+	color:#90122a;
+}
+
+h2 {  
+    font-family: 'LeagueGothicRegular', arial, serif;
+	border-bottom:2px dotted #ccc;
+	font-size:2.0em;
+	margin-bottom:5px;
+	text-transform:uppercase;
+	color:#333;
+}
+
+h2 span {
+	color:#90122a;
+}
+
+h3 {
+    font-family: 'LeagueGothicRegular', arial, serif;
+	text-transform:uppercase;
+	font-size:1.7em;
+	margin-bottom:4px;
+    color:#a03768;
+}
+
+a {
+	text-decoration:none;
+	color:#333;
+}
+
+/* Featured
+----------------------------------------------------------------------------------------------------*/
+
+.ftext {
+	background:#ccc url('../images/filterbtn.jpg');
+	width: 280px;
+	height:40px;
+	padding:10px;
+}
+
+.featured h3 a, .featured h3 {
+	color:#ebebeb;
+	font-size:22px;
+	padding: 10px 10px 10px 0;
+	font-family: 'LeagueGothicRegular', arial, serif;
+	text-transform:uppercase;
+	position:relative;
+	margin-top:-15px;
+}
+
+.featured div.date {
+	font-size:16px;
+	font-family: 'LeagueGothicRegular', arial, serif;
+	border-bottom:1px dotted #ccc;
+	color:#333;
+	padding:4px 8px;
+	text-transform:uppercase;
+
+}
+
+/* Filter Nav
+----------------------------------------------------------------------------------------------------*/
+
+.filterdate {
+	border-bottom:5px solid #333;
+	margin-bottom:10px;
+}
+
+.filterdate span {
+	background:#333;
+	padding: 5px 10px;
+	color:#fff;
+	font-size:9px;
+	height:10px;
+	/* border radius */
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	text-transform:uppercase;
+}
+
+.datefilter {
+	height:155px;
+	text-transform:uppercase;
+	font-size:.8em;
+}
+
+.datefilter li {
+	display:inline;
+	margin-right:5px;
+	margin-bottom:25px;
+	float:left;
+
+}
+
+ul#portfolio-filter a {
+    font-family: 'LeagueGothicRegular', arial, serif;
+	font-size:20px;
+	background:#ccc url('../images/filterbtn.jpg');
+	padding:10px 20px;
+	color:#ebebeb;
+	text-decoration:none;
+}
+
+ul#portfolio-filter a:hover {
+	background:#ccc url('../images/filterbtn_over.jpg');
+	-webkit-box-shadow:  0px 0px 2px  #000000;
+	-moz-box-shadow: 0px 0px 2px #000000;
+	box-shadow: 0px 0px 2px #000000; 
+}
+
+/* Signature Events
+----------------------------------------------------------------------------------------------------*/
+
+.list_carousel {
+	margin: 0 0 0px 0px;
+	width: 940px;
+	overflow:hidden;
+}
+
+.list_carousel ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: block;
+}
+
+.list_carousel li {
+	width: 220px;
+	height: 190px;
+	padding: 2px;
+	margin: 2px 16px 0 0;
+	display: block;
+	float: left;
+}
+
+.list_carousel li img {
+	z-index:1;
+}
+
+.list_carousel li div.dt {
+	font-size:16px;
+	font-family: 'LeagueGothicRegular', arial, serif;
+	border-bottom:1px dotted #ccc;
+	width:207px;
+	color:#333;
+	padding:3px 3px 3px 10px;
+	text-transform:uppercase;
+	margin-top:-30px;
+}
+
+.list_carousel li div.title a {
+	color:#ebebeb;
+	font-size:16px;
+	font-family: 'LeagueGothicRegular', arial, serif;
+	padding:4px 8px;
+	text-transform:uppercase;
+}
+
+.list_carousel li div.title {
+	width:214px;
+	background:#ccc url('../images/filterbtn.jpg');
+	padding:3px;
+}
+
+.list_carousel li div.title a:hover {
+	background:#ccc url('../images/filterbtn_over.jpg');	
+}
+
+#lctl {
+	float:left;
+	position: absolute;
+	margin-left:-68px;
+	margin-top:45px;
+	z-index:115;
+}
+
+#rctl {
+	float:right;
+	position: absolute;
+	margin-left:957px;
+	margin-top:45px;
+	z-index:115;
+}
+
+
+/* Events
+----------------------------------------------------------------------------------------------------*/
+
+.event {
+	margin-bottom:30px;
+	margin-top:10px;
+}
+
+.event h2 {
+	margin:-6px 0 0 0;
+	border-bottom:2px solid #eaeaea;
+	border-top:none;
+	color:#333;
+	height:70px;
+}
+
+.eventtext {
+	padding:5px;
+}
+
+.readmore a {
+	text-decoration:none;
+	color:#ebebeb;
+	padding: 5px 10px;
+	width:60px;
+	font-size:18px;
+	background:#ccc url('../images/filterbtn.jpg');
+	font-family: 'LeagueGothicRegular', arial, serif;
+	text-transform:uppercase;
+}
+
+.readmore a:hover {
+	background:#ccc url('../images/filterbtn_over.jpg');
+}
+
+
+#portfolio-list {
+	margin:0;
+	padding:0;
+}
+
+#portfolio-list li img {
+	padding:5px 5px 0 5px;
+	width:288px;
+	height:192px;
+}
+
+#portfolio-list li {
+	border:1px solid #eaeaea;
+	background:#f5f5f5;
+	width:298px;
+	height:480px;
+}
+
+.expired {
+	position:absolute;
+	width:288px;
+	height:112px;
+	background:#131313;
+	color:#fff;
+	font-family: 'LeagueGothicRegular', arial, serif;
+	text-align:center;
+	vertical-align: middle;
+	padding-top:80px;
+	font-size: 24px;
+	text-transform:uppercase;
+	filter:alpha(opacity=80);
+	opacity:.8;
+	margin: 5px 0 0 5px;
+}
+
+.eventdate {
+	font-size:20px;
+	margin-top:0px;
+	color:#666;
+	font-family: 'LeagueGothicRegular', arial, serif;
+	text-transform:uppercase;
+	height:55px;
+	
+}
+
+.eventdate span {
+	color:#90122a;
+}
+
+p.desc {
+	height:88px;
+	color:#666;
+}
+
+
+/* Admin
+----------------------------------------------------------------------------------------------------*/
+
+td {
+	padding:5px;
+	background:#eaeaea;
+}
+
+th {
+	background:#eaeaea;
+	padding:4px 8px;
+	height:50px;
+	font-family: 'LeagueGothicRegular', arial, serif;
+	font-size:20px;
+	text-transform:uppercase;
+	color:#333;
+	border-bottom:3px solid #333;
+	
+}
+
+td a:hover {
+	text-decoration: underline;
+}
+
+p.notice {
+	background:#e0f6dd;
+	border: 1px solid #7cc576;
+	padding:10px;
+	width:920px;
+	height:30px;
+	color:#333;
+	font-family: 'LeagueGothicRegular', arial, serif;
+	text-transform:uppercase;
+	font-size:28px;
+}
+
+/* Footer
+----------------------------------------------------------------------------------------------------*/
+
+.footer {
+	border-top:10px solid #131313;
+	margin-top:40px;
+	padding-bottom:50px;
+	padding-top:10px;
+	background: #000;
+	color:#fff;
+}
+
+.footer p {
+	font-size:.7em;
+} 
+
+.footer b, .footer strong {
+	font-size:1em;
+} 
+
+.footer a{
+	color:#90122a;
+} 
+
+.footer img {
+	padding-left: 10px;
+}
+
+.footer a:hover {
+	text-decoration:underline;
+}
+
+.footer h3 {
+	border-bottom:2px solid #131313;
+	color:#90122a;
+	font-size: 2em;
+	font-weight: normal;	
+}
+
+/* Twitter
+----------------------------------------------------------------------------------------------------*/
+
+.tweet, .query {
+	font-size:.7em;
+	line-height:15px;
+}
+
+.tweet .tweet_list, .query .tweet_list {
+    -webkit-border-radius:.5em;
+    list-style-type:none;
+    margin: 0;
+    padding: 0;
+    overflow-y:hidden;
+}
+
+.tweet .tweet_list .awesome, .tweet .tweet_list .epic, .query .tweet_list .awesome, .query .tweet_list .epic {
+    text-transform: uppercase; 
+}
+
+.tweet .tweet_list li, .query .tweet_list li {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: .5em; 
+}
+
+.tweet .tweet_list li a, .query .tweet_list li a {
+    color: #90122a; 
+}
+
+.tweet .tweet_list .tweet_even, .query .tweet_list .tweet_even {
+    border-top:1px dotted #131313;
+	border-bottom:1px dotted #131313;
+}
+
+.tweet .tweet_list .tweet_avatar, .query .tweet_list .tweet_avatar {
+    padding-right: .5em;
+    float: left; 
+}
+
+.tweet .tweet_list .tweet_avatar img, .query .tweet_list .tweet_avatar img {
+    vertical-align: middle; 
+}
+
+
+/* Timepicker
+----------------------------------------------------------------------------------------------------*/
+
+.ui-timepicker-div .ui-widget-header{ margin-bottom: 8px; }
+.ui-timepicker-div dl{ text-align: left; }
+.ui-timepicker-div dl dt{ height: 25px; }
+.ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+
+/* Forms
+----------------------------------------------------------------------------------------------------*/
+label {
+	background:#ccc url('../images/filterbtn.jpg');	
+	padding: 4px 8px;
+	float:left;
+	color:#333;
+	font-family: 'LeagueGothicRegular', arial, serif;
+	font-size:20px;
+	margin-right: 0.5em;
+	margin-top: 0.8em;
+	width:170px;
+	display:block;
+	text-align:right;
+	text-transform:uppercase;
+}
+
+input {
+	height:20px;
+	padding:4px 8px;
+	border: 1px solid #eaeaea;
+	font-family: 'LeagueGothicRegular', arial, serif;
+	font-size:20px;
+	color:#333;
+	background:#f5f5f5;
+}
+
+textarea {
+	width:300px;
+	padding:4px 8px;
+	border: 1px solid #eaeaea;
+	color:#333;
+	background:#f5f5f5;
+}
+
+input[type="submit"] {
+	text-decoration:none;
+	color:#333;
+	padding: 5px 10px;
+	width:60px;
+	height:20px;
+	font-size:18px;
+	background:#ccc url('../images/filterbtn.jpg');
+	font-family: 'LeagueGothicRegular', arial, serif;
+	text-transform:uppercase;
+}
+
+#errorExplanation {
+	background:#f6dbe3;
+	border: 1px solid #d9685c;
+	padding:10px;
+	width:500px;
+}
+
+#errorExplanation h3 {
+	color:#333;
+	font-family: 'LeagueGothicRegular', arial, serif;
+	text-transform:uppercase;
+	font-size:28px;
+}

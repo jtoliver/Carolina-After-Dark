@@ -1,0 +1,48 @@
+<!-- Logo -->
+<div class="grid_4 logo">
+	<%=image_tag('logo.png') %>
+	<p>Carolina Welcome represents a series of social, educational and recreational activities designed to welcome you to campus and introduce you to the history and traditions of Carolina. </p>
+</div>
+<!--  END Logo -->
+
+<!-- Random Feature Event -->
+<div class="grid_4 featured">
+	<h2>Featured <span>Event</span></h2>
+	<% if !@featrand.nil? %>
+		<% if !@featrand.eventflyer_file_name.nil? %>
+			<%= link_to (image_tag @featrand.eventflyer.url(:medium), :alt => @featrand.event_title), @featrand %>
+		<% else %>
+			<%= link_to image_tag('cw300.png'), @featrand %>
+		<% end %>
+	<div class="ftext">
+		<h3><%= link_to @featrand.event_title, @featrand %></h3>
+	</div>	
+		<div class="date"><%= @featrand.event_date.strftime("%b %d at %I:%M %p") %></div>
+	
+	<% end %>
+</div>
+						
+<!-- Twitter Feed -->
+<div class="grid_4 twitter">
+	<h2><span>T</span>witter</h2>
+	<div class="tweet"></div>
+</div>
+<!-- END Twitter Feed -->
+<div class="grid_12">
+	<h2><%= @event.event_title %> - <span><%= @event.event_date.strftime("%b %d at %I:%M %p") %></span> - <%= @event.event_location %></h2>
+	<div class="grid_8 alpha">
+		<p><%= @event.event_description %></p>
+		<p><b>Event Sponsor(s)</b> <%= @event.event_sponsers %></p>
+		<p class="readmore"><%= link_to 'Back', events_path %></p>
+	</div>
+	<div class="grid_4 omega">
+			<% if !@event.eventflyer_file_name.nil? %>
+				<%= image_tag @event.eventflyer.url(:original), :width => "300" %>
+			<% else %>
+				<%= image_tag('cw300.png') %>
+			<% end %>				
+	</div>
+</div>
+			
+			
+			
