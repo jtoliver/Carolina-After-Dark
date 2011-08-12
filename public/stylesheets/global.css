@@ -209,7 +209,7 @@ ul#portfolio-filter a:hover {
 	padding: 5px 10px;
 	width:60px;
 	font-size:18px;
-	background:#ccc url('../images/filterbtn.jpg');
+	background:#ccc url('../images/filterbtn2.jpg');
 	font-family: 'LeagueGothicRegular', arial, serif;
 	text-transform:uppercase;
 }
@@ -224,7 +224,7 @@ ul#portfolio-filter a:hover {
 	padding: 5px 10px;
 	width:60px;
 	font-size:18px;
-	background:#ccc url('../images/filterbtn.jpg');
+	background:#ccc url('../images/filterbtn2.jpg');
 	font-family: 'LeagueGothicRegular', arial, serif;
 	text-transform:uppercase;
 	margin-top:50px;
@@ -425,7 +425,7 @@ p.notice {
 /* Forms
 ----------------------------------------------------------------------------------------------------*/
 label {
-	background:#ccc url('../images/filterbtn.jpg');	
+	background:#ccc url('../images/filterbtn2.jpg');	
 	padding: 4px 8px;
 	float:left;
 	color:#333;
