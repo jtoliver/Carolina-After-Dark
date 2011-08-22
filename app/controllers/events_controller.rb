@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-	before_filter :authenticate, :only => [:destroy, :admin, :new]
+	before_filter :authenticate, :except => [:index, :show]
 
 	def index
 		@event = Event.currentevents
