@@ -1,8 +1,8 @@
 <div data-role="header">
-  <h1>Events</h1>
+  <h1>UNIVERSITY OF SC</h1>
 </div>
-	<div style="height:100%; width:100%; background:#fff; text-align:center;">
-		<%= image_tag('logo_mobile2.png') %>
+	<div style="height:100%; width:100%; background-color:#000; text-align:center;">
+		<%= image_tag('cad_mobile.png') %>
 	</div>
 <div data-role="content">
 	<ul data-role="listview">
@@ -14,7 +14,7 @@
 						<% if !event.eventflyer_file_name.nil? %>
 							<%= image_tag event.eventflyer.url(:mobile), :alt => event.event_title %>
 						<% else %>
-							<%= image_tag('cw80.png') %>
+							<%= image_tag('ad80.png') %>
 						<% end %>	
 						<h3 class="ui-li-heading"><%= event.event_title %></h3>
 						<p class="ui-li-desc"><%= event.event_date.strftime("%I:%M %p") %> - <%= event.event_location %></p>

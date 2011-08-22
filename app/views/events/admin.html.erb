@@ -15,7 +15,7 @@
 		<% @event.each do |e| %>
 		<tbody>
 			<tr>
-				<td align="center" valign="middle"><% if !e.eventflyer_file_name.nil? %> <%= image_tag e.eventflyer.url(:mobile), :alt => e.event_title %><% else %><%= image_tag('cw80.png') %><% end %></td>
+				<td align="center" valign="middle"><% if !e.eventflyer_file_name.nil? %> <%= image_tag e.eventflyer.url(:mobile), :alt => e.event_title %><% else %><%= image_tag('ad80.png') %><% end %></td>
 				<td><b><%= e.event_title %></b></td>
 				<td><%= e.event_location %>
 				<td><%= e.event_date.strftime("%b %d at %I:%M %p") %></td>
